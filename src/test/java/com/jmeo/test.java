@@ -1,5 +1,6 @@
 package com.jmeo;
 
+import com.jmeo.config.ControlSet;
 import com.jmeo.control.Analysis;
 import org.junit.Test;
 
@@ -19,6 +20,10 @@ public class test {
         assert Analysis.verifyCode(code2);
     }
 
+    @Test
+    public void controlSet(){
+        ControlSet.initSet();
+    }
 
 
 }

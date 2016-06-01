@@ -1,6 +1,7 @@
 package com.jmeo.main;
 
 import com.jmeo.config.Config;
+import com.jmeo.config.ControlSet;
 import com.jmeo.control.Analysis;
 import com.jmeo.control.MouseControl;
 import com.jmeo.socket.SocketServer;
@@ -19,9 +20,10 @@ public class Main {
 //        Properties p = Config.getConfig();
 //        System.out.println(Config.getConfig().getProperty("port"));
         //socket 服务
-//        SocketServer.start();
+        SocketServer.start();
 
 //        System.out.println(Analysis.verifyCode("0x0001"));
 
+//        ControlSet.initSet();
     }
 }

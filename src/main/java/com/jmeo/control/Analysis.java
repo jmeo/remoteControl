@@ -1,5 +1,7 @@
 package com.jmeo.control;
 
+import com.jmeo.config.ControlSet;
+
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -22,8 +24,30 @@ public class Analysis {
         return false;
     }
 
+    /**
+     * 拆分信号 以空格分开
+     * @param info
+     * @return
+     */
+    public static String[] getInfos(String info){
+        return info.split(" ");
+    }
 
+    public static String getAction(String info){
+        if(verifyCode(info)){
+            return ControlSet.getAction(info);
+        }else {
+            return null;
+        }
+    }
 
-
+    public static String [] getActions(String info){
+        String [] vs = getInfos(info);
+        String [] acts = new String[vs.length];
+        for(int i=0;i<vs.length;i++){
+            acts[i] = getAction(vs[i]);
+        }
+        return acts;
+    }
 
 }

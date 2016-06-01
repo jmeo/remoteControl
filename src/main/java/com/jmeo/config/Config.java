@@ -27,11 +27,11 @@ public class Config {
         return getDirPath()+"/conf/config.properties";
     }
 
-    public static Properties getConfig(){
+    public static Properties getConfig(String path){
         if(properties == null){
             properties = new Properties();
             try {
-                properties.load(new FileInputStream(getConfigPath()));
+                properties.load(new FileInputStream(path));
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -39,9 +39,19 @@ public class Config {
         return properties;
     }
 
+    public static Properties getProperties(String path){
+        Properties ps = new Properties();
+        try {
+            ps.load(new FileInputStream(path));
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return ps;
+    }
+
     public static void setProperties(String key,Object value){
         if(properties == null){
-            properties = getConfig();
+            properties = getConfig(getConfigPath());
         }
         properties.setProperty(key,String.valueOf(value));
         try {
@@ -52,7 +62,7 @@ public class Config {
     }
 
     public static String getProperty(String key){
-        return getConfig().getProperty(key);
+        return getConfig(getConfigPath()).getProperty(key);
     }
 
 }

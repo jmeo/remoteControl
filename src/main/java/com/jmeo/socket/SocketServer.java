@@ -1,6 +1,7 @@
 package com.jmeo.socket;
 
 import com.jmeo.config.Config;
+import com.jmeo.control.ControlAction;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -29,7 +30,9 @@ public class SocketServer {
             while (true){
                 socket = server.accept();
                 BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
-                System.out.println(in.readLine());
+                String line = in.readLine();
+                System.out.println(line);
+                ControlAction.Analysis(line);
             }
         } catch (Exception e) {
             e.printStackTrace();
